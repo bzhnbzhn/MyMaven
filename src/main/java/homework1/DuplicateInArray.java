@@ -4,7 +4,7 @@ import java.util.*;
 
 public class DuplicateInArray {
 
-    public static HashSet<Integer> findDuplicate(int[] array) {
+    public static Set<Integer> findDuplicate(int[] array) {
 
         HashSet<Integer> duplicates = new HashSet<>();
 

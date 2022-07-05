@@ -2,27 +2,27 @@ package homework1;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.testng.Assert.assertEquals;
 
 class OperationsTest {
 
     @Test
-    void aOperations() {
-        assertEquals(43, Operations.aOperations());
+    void getA() {
+        assertEquals(43, Operations.getA(),"Incorrect result of getA operation");
     }
 
     @Test
-    void bOperations() {
-        assertEquals(1, Operations.bOperations());
+    void getB() {
+        assertEquals(1, Operations.getB(),"Incorrect result of getB operation");
     }
 
     @Test
-    void cOperations() {
-        assertEquals(19, Operations.cOperations());
+    void getC() {
+        assertEquals(19, Operations.getC(),"Incorrect result of getC operation");
     }
 
     @Test
-    void dOperations() {
-        assertEquals(13, Operations.dOperations());
+    void gedD() {
+        assertEquals(13, Operations.getD(),"Incorrect result of getD operation");
     }
 }
