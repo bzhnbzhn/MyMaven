@@ -1,0 +1,13 @@
+Question 1
+The following code creates one array and one string object.
+How many references to those objects exist after the code executes?
+Is either object eligible for garbage collection?
+
+String[] students = new String[10];
+String studentName = "Peter Parker";
+students[0] = studentName;
+studentName = null;
+
+
+Question 2
+How does a program destroy an object that it creates?
