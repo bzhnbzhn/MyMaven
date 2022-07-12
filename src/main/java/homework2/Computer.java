@@ -3,8 +3,8 @@ package homework2;
 public class Computer {
     private String brand;
     private int screenSize;
-    int numberOfCores;
-    String type;
+    private int numberOfCores;
+    private String type;
 
     public Computer(String brand, int screenSize) {
         this.brand = brand;
@@ -18,9 +18,12 @@ public class Computer {
         this.type = type;
     }
 
+    public int getScreenSize(){
+        return screenSize;
+    }
 
     public static void main(String[] args) {
         Computer workComputer = new Computer("MacBook", 15, 5, "laptop");
-        Computer personalComputer = new Computer("Samsung", 2, 1, "desktop");
+        Computer personalComputer = new Computer("Samsung", 2);
     }
 }

@@ -4,11 +4,7 @@ public class Rectangle {
     private int width;
     private int height;
 
-    int getArea(){
+    static int getArea(int width, int height){
         return width * height;
-    }
-    public Rectangle(int width, int height) {
-        this.width = width;
-        this.height = height;
     }
 }
