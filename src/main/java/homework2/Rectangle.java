@@ -4,7 +4,10 @@ public class Rectangle {
     private int width;
     private int height;
 
-    static int getArea(int width, int height){
+    public int getArea() {
         return width * height;
+    }
+
+    public Rectangle(int width, int height) {
     }
 }

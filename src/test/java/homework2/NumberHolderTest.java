@@ -13,8 +13,9 @@ class NumberHolderTest {
         NumberHolder bucket = new NumberHolder();
 
         assertEquals(10, box.getAnInt());
-        assertEquals(5, plate.getAnInt());
+        assertEquals(5.1F, plate.getaFloat());
 
         bucket.setAnInt(10);
+        assertEquals(10,bucket.getAnInt());
     }
 }

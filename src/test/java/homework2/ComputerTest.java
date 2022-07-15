@@ -9,6 +9,6 @@ class ComputerTest {
     @Test
     void getScreenSize() {
         Computer lenovoComputer = new Computer("Lenovo", 21);
-        assertEquals(21, lenovoComputer.getScreenSize());
+        assertEquals(21, lenovoComputer.getScreenSize(),"Incorrect screen size");
     }
 }
