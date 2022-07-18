@@ -8,6 +8,6 @@ class RectangleTest {
 
     @Test
     void getArea() {
-        assertEquals(100, new Rectangle(10,10).getArea());
+        assertEquals(100, new Rectangle(10,10).getArea(),"Incorrect rectangle area");
     }
 }

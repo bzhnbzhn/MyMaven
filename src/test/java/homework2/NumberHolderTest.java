@@ -12,10 +12,10 @@ class NumberHolderTest {
         NumberHolder plate = new NumberHolder(5,5.1F);
         NumberHolder bucket = new NumberHolder();
 
-        assertEquals(10, box.getAnInt());
-        assertEquals(5.1F, plate.getaFloat());
+        assertEquals(10, box.getAnInt(),"Incorrect anInt variable");
+        assertEquals(5.1F, plate.getaFloat(),"Incorrect aFloat variable");
 
         bucket.setAnInt(10);
-        assertEquals(10,bucket.getAnInt());
+        assertEquals(10,bucket.getAnInt(),"Incorrect anInt variable");
     }
 }

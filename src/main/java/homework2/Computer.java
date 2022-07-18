@@ -18,12 +18,11 @@ public class Computer {
         this.type = type;
     }
 
-    public int getScreenSize(){
+    public int getScreenSize() {
         return screenSize;
     }
 
-    public static void main(String[] args) {
-        Computer workComputer = new Computer("MacBook", 15, 5, "laptop");
-        Computer personalComputer = new Computer("Samsung", 2);
+    public int getNumberOfCores() {
+        return numberOfCores;
     }
 }
