@@ -1,19 +1,14 @@
 package hometask3.shape;
 
 public class Circle extends Round {
+    int height;
 
-    public Circle(int radius) {
-        super(radius);
+    public Circle(int height) {
+        this.height = height;
     }
 
     @Override
-    double getSquare() {
-        return Math.PI*Math.pow(radius,2);
+    public double getSquare() {
+        return Math.PI * Math.pow(height, 2);
     }
-
-    public static void main(String[] args) {
-        Circle circle = new Circle(10);
-        System.out.println("The circle square is " + circle.getSquare());
-    }
-
 }

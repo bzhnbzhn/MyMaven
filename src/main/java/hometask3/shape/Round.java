@@ -2,19 +2,19 @@ package hometask3.shape;
 
 abstract class Round implements Shape {
 
-    int radius;
-    int a;
-    int b;
+    int width;
+    int height;
 
+    public Round(){
 
-    public Round(int radius) {
-        this.radius = radius;
     }
 
-    public Round(int a, int b) {
-        this.a = a;
-        this.b = b;
+    public Round(int width, int height) {
+        this.width = width;
+        this.height = height;
     }
 
-    abstract double getSquare();
+    public double getSquare(){
+        return Math.PI * height * width;
+    }
 }

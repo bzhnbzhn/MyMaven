@@ -1,13 +1,15 @@
 package hometask3.shape;
 
 public class Square extends Rectangular {
-    public Square(int a) {
-        super(a);
+    int width;
+
+    public Square(int width) {
+        this.width = width;
     }
 
     @Override
-    int getSquare() {
-        return a * a;
+    public double getSquare() {
+        return width * width;
     }
 
     public static void main(String[] args) {

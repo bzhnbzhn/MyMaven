@@ -6,11 +6,6 @@ public class Oval extends Round {
         super(a, b);
     }
 
-    @Override
-    double getSquare() {
-        return Math.PI * a * b;
-    }
-
     public static void main(String[] args) {
         Oval oval = new Oval(10, 10);
         System.out.println("The oval square is " + oval.getSquare());

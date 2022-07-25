@@ -1,17 +1,18 @@
 package hometask3.shape;
 
-public abstract class Rectangular implements Shape{
-    int a;
-    int b;
+public abstract class Rectangular implements Shape {
+    int width;
+    int height;
 
-    public Rectangular(int a) {
-        this.a = a;
+    public Rectangular(int width, int height) {
+        this.width = width;
+        this.height = height;
     }
 
-    public Rectangular(int a, int b) {
-        this.a = a;
-        this.b = b;
+    public Rectangular() {
     }
 
-    abstract int getSquare();
+    public double getSquare() {
+        return width * height;
+    }
 }
