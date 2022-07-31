@@ -1,16 +1,14 @@
 package homework4;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 public class CollectionsIntoMap {
 
-    public static HashMap<Integer, Integer> collectionsIntoMapB(List<Integer> collection1, List<Integer> collection2) throws Exception {
+    public static <K, V> Map<K, V> convertCollectionsIntoMapException(List<K> collection1, List<V> collection2) throws Exception {
 
-        HashMap<Integer, Integer> collectionsIntoMap = new HashMap<>();
+        HashMap<K, V> collectionsIntoMap = new HashMap<>();
         if (collection1.size() > collection2.size())
             throw new Exception("Value is not enough for the Map");
         if (collection1.size() < collection2.size())
@@ -21,9 +19,8 @@ public class CollectionsIntoMap {
         return collectionsIntoMap;
     }
 
-    public static HashMap<Integer, Integer> collectionsIntoMapA(List<Integer> collection1, List<Integer> collection2) {
-
-        HashMap<Integer, Integer> collectionsIntoMap = new HashMap<>();
+    public static <K, V> Map<K, V> convertCollectionsIntoMap(List<K> collection1, List<V> collection2) {
+        HashMap<K, V> collectionsIntoMap = new HashMap<>();
         if (collection1.size() > collection2.size()) {
             for (int i = 0; i < collection1.size(); i++) {
                 while (i < collection2.size()) {
@@ -31,7 +28,6 @@ public class CollectionsIntoMap {
                     i++;
                 }
                 collectionsIntoMap.put(collection1.get(i), null);
-
             }
         } else {
             for (int i = 0; i < collection1.size(); i++) {
@@ -39,12 +35,6 @@ public class CollectionsIntoMap {
             }
         }
         return collectionsIntoMap;
-    }
-
-    public static void main(String[] args) {
-        ArrayList<Integer> alOne = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
-        ArrayList<Integer> alTwo = new ArrayList<>(Arrays.asList(6, 7, 8, 9));
-        System.out.println(collectionsIntoMapA(alOne, alTwo));
     }
 }
 
