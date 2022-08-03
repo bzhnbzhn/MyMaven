@@ -1,45 +1,70 @@
 package homework4;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Map;
+import java.util.*;
 
 import static homework4.CollectionsIntoMap.convertCollectionsIntoMap;
 import static homework4.CollectionsIntoMap.convertCollectionsIntoMapException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CollectionsIntoMapTest {
 
-    ArrayList<Integer> firstFiveDimensionalList = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
-    ArrayList<Integer> secondFiveDimensionalList = new ArrayList<>(Arrays.asList(6, 7, 8, 9, 10));
-    ArrayList<Integer> secondFourDimensionalList = new ArrayList<>(Arrays.asList(6, 7, 8, 9));
-    ArrayList<Integer> secondSixDimensionalList = new ArrayList<>(Arrays.asList(6, 7, 8, 9, 10, 11));
+    List<Integer> firstFiveDimensionalList = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+    List<Integer> secondFiveDimensionalList = new ArrayList<>(Arrays.asList(6, 7, 8, 9, 10));
+    List<Integer> secondFourDimensionalList = new ArrayList<>(Arrays.asList(6, 7, 8, 9));
+    List<Integer> secondSixDimensionalList = new ArrayList<>(Arrays.asList(6, 7, 8, 9, 10, 11));
 
     @Test
     void twoCollectionsSameSize() {
-        assertEquals(Map.of(1, 6, 2, 7, 3, 8, 4, 9, 5, 10), convertCollectionsIntoMap(firstFiveDimensionalList, secondFiveDimensionalList));
+        assertEquals(
+                Map.of(1, 6, 2, 7, 3, 8, 4, 9, 5, 10),
+                convertCollectionsIntoMap(firstFiveDimensionalList, secondFiveDimensionalList));
     }
 
     @Test
     void firstCollectionSizeGreaterThanSecond() {
-        assertEquals(Map.of(1, 6, 2, 7, 3, 8, 4, 9, 5, "null"), convertCollectionsIntoMap(firstFiveDimensionalList, secondFourDimensionalList));
+        Map<Integer, Integer> expectedMap = new HashMap<>();
+        expectedMap.put(1, 6);
+        expectedMap.put(2, 7);
+        expectedMap.put(3, 8);
+        expectedMap.put(4, 9);
+        expectedMap.put(5, null);
+        assertEquals(expectedMap, convertCollectionsIntoMap(firstFiveDimensionalList, secondFourDimensionalList));
     }
 
     @Test
     void secondCollectionSizeGreaterThanFirst() {
-        assertEquals(Map.of(1, 6, 2, 7, 3, 8, 4, 9, 5, 10), convertCollectionsIntoMap(firstFiveDimensionalList, secondSixDimensionalList));
+        assertEquals(
+                Map.of(1, 6, 2, 7, 3, 8, 4, 9, 5, 10),
+                convertCollectionsIntoMap(firstFiveDimensionalList, secondSixDimensionalList));
     }
 
     @Test
-    void firstCollectionSizeGreaterThanSecondWithException() throws Exception {
-        assertThrows(new Exception("Key is not enough for the Map"), convertCollectionsIntoMapException(firstFiveDimensionalList, secondFourDimensionalList));
+    void convertCollectionsIntoMapExceptionWithSameSize() {
+        assertEquals(
+                Map.of(1, 6, 2, 7, 3, 8, 4, 9, 5, 10),
+                convertCollectionsIntoMapException(firstFiveDimensionalList, secondFiveDimensionalList));
     }
 
     @Test
-    void secondCollectionSizeGreaterThanFirstWithException() throws Exception {
-        assertThrows(new Exception("Key is not enough for the Map"), convertCollectionsIntoMapException(firstFiveDimensionalList, secondSixDimensionalList));
+    void firstCollectionSizeGreaterThanSecondWithException() {
+        Exception exception = Assertions.assertThrows(
+                Exception.class,
+                () -> convertCollectionsIntoMapException(firstFiveDimensionalList, secondFourDimensionalList),
+                "Exception for K>V case wasn't thrown"
+        );
+        Assertions.assertEquals("Value is not enough for the Map", exception.getMessage(), "Incorrect Exception message");
+    }
+
+    @Test
+    void secondCollectionSizeGreaterThanFirstWithException() {
+        Exception exception = Assertions.assertThrows(
+                Exception.class,
+                () -> convertCollectionsIntoMapException(firstFiveDimensionalList, secondSixDimensionalList),
+                "Exception for K<V case wasn't thrown"
+        );
+        Assertions.assertEquals("Key is not enough for the Map", exception.getMessage(), "Incorrect Exception message");
     }
 }

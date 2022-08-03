@@ -13,11 +13,11 @@ class HomeTask4Test {
 
     @Test
     void charCountDictionary() {
-        assertEquals(Map.of('e', 1, 's', 1, 't', 2), getDictionary("test"));
+        assertEquals(Map.of('e', 1, 's', 1, 't', 2), getDictionary("test"),"Map of letters with its counter is not correct");
     }
 
     @Test
     void noDuplicates() {
-        assertEquals(3, removeDuplicatesFromCollection(List.of(1, 1, 2, 3, 3)).size());
+        assertEquals(3, removeDuplicatesFromCollection(List.of(1, 1, 2, 3, 3)).size(),"Was returned a collection with duplicates");
     }
 }
