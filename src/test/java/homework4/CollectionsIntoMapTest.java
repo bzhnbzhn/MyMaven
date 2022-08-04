@@ -20,7 +20,7 @@ class CollectionsIntoMapTest {
     void twoCollectionsSameSize() {
         assertEquals(
                 Map.of(1, 6, 2, 7, 3, 8, 4, 9, 5, 10),
-                convertCollectionsIntoMap(firstFiveDimensionalList, secondFiveDimensionalList));
+                convertCollectionsIntoMap(firstFiveDimensionalList, secondFiveDimensionalList),"Incorrect conversion two Collections into Map");
     }
 
     @Test
@@ -31,21 +31,21 @@ class CollectionsIntoMapTest {
         expectedMap.put(3, 8);
         expectedMap.put(4, 9);
         expectedMap.put(5, null);
-        assertEquals(expectedMap, convertCollectionsIntoMap(firstFiveDimensionalList, secondFourDimensionalList));
+        assertEquals(expectedMap, convertCollectionsIntoMap(firstFiveDimensionalList, secondFourDimensionalList),"Incorrect conversion two Collections into Map");
     }
 
     @Test
     void secondCollectionSizeGreaterThanFirst() {
         assertEquals(
                 Map.of(1, 6, 2, 7, 3, 8, 4, 9, 5, 10),
-                convertCollectionsIntoMap(firstFiveDimensionalList, secondSixDimensionalList));
+                convertCollectionsIntoMap(firstFiveDimensionalList, secondSixDimensionalList),"Incorrect conversion two Collections into Map");
     }
 
     @Test
     void convertCollectionsIntoMapExceptionWithSameSize() {
         assertEquals(
                 Map.of(1, 6, 2, 7, 3, 8, 4, 9, 5, 10),
-                convertCollectionsIntoMapException(firstFiveDimensionalList, secondFiveDimensionalList));
+                convertCollectionsIntoMapException(firstFiveDimensionalList, secondFiveDimensionalList),"Incorrect conversion two Collections into Map");
     }
 
     @Test
