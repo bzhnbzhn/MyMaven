@@ -1,6 +1,5 @@
-package hometaskStream;
+package hometaskstream;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -42,27 +41,13 @@ public class Person {
         return age;
     }
 
-    public static void main(String[] args) {
-        List<Person> personList = new ArrayList<>();
-        {
-            personList.add(new Person("Peter", "Patterson", 21));
-            personList.add(new Person("Paul", "Walker", 31));
-            personList.add(new Person("Steve", "Runner", 17));
-            personList.add(new Person("Arnold", "", -1));
-            personList.add(new Person(" ", "Stevenson", 19));
-            personList.add(new Person("   ", "Stevenson", 19));
-            personList.add(new Person("      ", "Stevenson", 19));
-            personList.add(new Person(" Arnold", "Stevenson", 19));
-            personList.add(null);
-            personList.add(new Person("Aaron", "Bortnicker", 18));
-        }
-        Set<String> personFirstNames = personList
+    public static Set<String> getPersonFirstNames(List<Person> personList) {
+        return personList
                 .stream()
                 .filter(Objects::nonNull)
                 .filter(person -> !person.firstName.isBlank())
                 .filter(person -> person.age >= 18)
-                .map(person -> (person.getFirstName().toUpperCase().replaceAll(" ", "")))
+                .map(person -> (person.getFirstName().toUpperCase().trim()))
                 .collect(Collectors.toSet());
-        System.out.println(personFirstNames);
     }
 }

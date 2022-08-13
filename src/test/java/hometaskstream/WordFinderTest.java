@@ -1,4 +1,4 @@
-package hometaskStream;
+package hometaskstream;
 
 import org.junit.jupiter.api.Test;
 

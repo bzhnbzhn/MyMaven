@@ -1,4 +1,4 @@
-package hometaskStream;
+package hometaskstream;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -10,7 +10,7 @@ public class Book {
 
     public Book() {
         this.price = getRandomBookPrice();
-        this.name = getRandomBookName();
+        this.name = getRandomBookName().toUpperCase();
     }
 
     public Book(String name, int price) {
@@ -33,7 +33,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book name is " + this.name.toUpperCase() + " Book price is " + this.price + "$";
+        return "Book name is " + this.name + " Book price is " + this.price + "$";
     }
 
     public static String getRandomBookName() {
@@ -47,8 +47,7 @@ public class Book {
                     (random.nextFloat() * (rightLimit - leftLimit + 1));
             buffer.append((char) randomLimitedInt);
         }
-        String generatedString = buffer.toString();
-        return generatedString;
+        return buffer.toString();
     }
 
     public static int getRandomBookPrice() {
@@ -79,56 +78,65 @@ public class Book {
         return book;
     }
 
-    public static void main(String[] args) {
+    public static Collection<Book> printAllBooks(List<Book> bookList) {
+        return bookList;
+    }
 
-        List<Book> booksList = new ArrayList<>(Book.getRandomBooks(10));
-        booksList.add(new Book("ABC", 99));
-        booksList.add(new Book("abc", 100));
-        booksList.add(new Book("I love Java", 100));
-        booksList.add(new Book("I love Java", 101));
+    public static List<String> printAllBooksName(List<Book> bookList) {
+        return bookList
+                .stream()
+                .map(Book::getName)
+                .collect(Collectors.toList());
+    }
 
-        Integer sumOfBooksPrices = booksList
+    public static Integer getTotalPriceOfAllBooks(List<Book> bookList) {
+        return bookList
                 .stream()
                 .map(Book::getPrice)
                 .reduce(0, Integer::sum);
-        System.out.println("The sum of books prices is " +sumOfBooksPrices + "$");
+    }
 
-        Set<String> booksNameOnALetter = booksList
+    public static Long getNumberOfBooksWithFiveLettersName(List<Book> booksList) {
+        return booksList
+                .stream()
+                .map(Book::getName)
+                .filter(bookName -> bookName.length() == 5).count();
+    }
+
+    public static String getBookNameOnALetter(List<Book> bookList) {
+        return bookList
                 .stream()
                 .map(Book::getName)
                 .filter(booksName -> booksName.startsWith("A") || booksName.startsWith("a"))
-                .collect(Collectors.toSet());
-        System.out.println("Books that starts on A letter are: " + booksNameOnALetter);
+                .findFirst()
+                .get();
+    }
 
-        Book bookWithHighestPrice = booksList
+    public static String getBookWithHighestPrice(List<Book> bookList) {
+        return bookList
                 .stream()
                 .max(Comparator.comparing(Book::getPrice))
-                .get();
-        System.out.println("The highest price book is: " + bookWithHighestPrice);
-
-        Long booksWithFiveLettersName = booksList
-                .stream()
                 .map(Book::getName)
-                .filter(bookName -> bookName.length() >= 5).count();
-        System.out.println(booksWithFiveLettersName + " Books have name longer that 5 letter");
+                .get();
+    }
 
-        List<Book> booksPriceHigher30 = booksList
+    public static Collection<Book> getBookListThatPriceHigher30(List<Book> bookList) {
+        return bookList
                 .stream()
-                .filter((book) -> book.getPrice() >= 30)
+                .filter(book -> book.getPrice() > 30)
                 .collect(Collectors.toList());
-        System.out.println("A list of books with price higher than 30$: " + booksPriceHigher30);
+    }
 
-        List<Book> bookInDescOrder = booksList
+    public static Collection<Book> getBookListInDescOrder(List<Book> bookList) {
+        return bookList
                 .stream()
                 .sorted(Comparator.comparing(Book::getName).reversed().thenComparingDouble(Book::getPrice))
                 .collect(Collectors.toList());
-        System.out.println("All books in desc order "+ bookInDescOrder);
+    }
 
-        Book book1 = new Book("Book", 5);
-        Book book2 = new Book("Book", 5);
+    public static String getLibraryName(Book book1, Book book2) {
         Map<Book, String> mapWithBook = new HashMap<>();
         mapWithBook.put(book1, "print this string");
-        String get = mapWithBook.get(book2);
-        System.out.println(get);
+        return mapWithBook.get(book2);
     }
 }

@@ -1,21 +1,17 @@
-package hometaskStream;
+package hometaskstream;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class WordFinder {
 
     public static List<String> findWordsByLetter(String text, String letter) {
-        List<String> wordsArray = new ArrayList<>(Arrays.asList(text.toLowerCase().split(" ")));
-        Function<String, Predicate<String>> createCharTest = findChar -> (str -> str.startsWith(findChar));
-        List<String> longWords = wordsArray
+        List<String> wordList = new ArrayList<>(Arrays.asList(text.toLowerCase().split(" ")));
+        return wordList
                 .stream()
-                .filter(createCharTest.apply(letter.toLowerCase()))
+                .filter(word -> word.startsWith(letter.toLowerCase()))
                 .collect(Collectors.toList());
-        return longWords;
     }
 }
