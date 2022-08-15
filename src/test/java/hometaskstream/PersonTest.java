@@ -13,18 +13,17 @@ class PersonTest {
     @Test
     void getPersonFirstNames() {
         List<Person> personList = new ArrayList<>();
-        {
-            personList.add(new Person("Peter", "Patterson", 21));
-            personList.add(new Person("Paul", "Walker", 31));
-            personList.add(new Person("Steve", "Runner", 17));
-            personList.add(new Person("Arnold", "", -1));
-            personList.add(new Person(" ", "Stevenson", 19));
-            personList.add(new Person("   ", "Stevenson", 19));
-            personList.add(new Person("      ", "Stevenson", 19));
-            personList.add(new Person(" Arnold", "Stevenson", 19));
-            personList.add(null);
-            personList.add(new Person("Aaron", "Bortnicker", 18));
-        }
-        assertEquals(Set.of("AARON", "ARNOLD", "PETER", "PAUL"), Person.getPersonFirstNames(personList));
+        personList.add(new Person("Peter", "Patterson", 21));
+        personList.add(new Person("Paul", "Walker", 31));
+        personList.add(new Person("Steve", "Runner", 17));
+        personList.add(new Person("Arnold", "", -1));
+        personList.add(new Person(" ", "Stevenson", 19));
+        personList.add(new Person("   ", "Stevenson", 19));
+        personList.add(new Person("      ", "Stevenson", 19));
+        personList.add(new Person(" Arnold", "Stevenson", 19));
+        personList.add(null);
+        personList.add(new Person("Aaron", "Bortnicker", 18));
+
+        assertEquals(Set.of("AARON", "ARNOLD", "PETER", "PAUL"), Person.getPersonFirstNames(personList), "Wrong person's name were found");
     }
 }

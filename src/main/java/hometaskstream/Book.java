@@ -10,7 +10,7 @@ public class Book {
 
     public Book() {
         this.price = getRandomBookPrice();
-        this.name = getRandomBookName().toUpperCase();
+        this.name = getRandomBookName();
     }
 
     public Book(String name, int price) {
@@ -47,7 +47,7 @@ public class Book {
                     (random.nextFloat() * (rightLimit - leftLimit + 1));
             buffer.append((char) randomLimitedInt);
         }
-        return buffer.toString();
+        return buffer.substring(0, 1).toUpperCase() + buffer.substring(1);
     }
 
     public static int getRandomBookPrice() {
@@ -120,10 +120,10 @@ public class Book {
                 .get();
     }
 
-    public static Collection<Book> getBookListThatPriceHigher30(List<Book> bookList) {
+    public static Collection<Book> excludeBookListThatPriceHigher30(List<Book> bookList) {
         return bookList
                 .stream()
-                .filter(book -> book.getPrice() > 30)
+                .filter(book -> book.getPrice() <= 30)
                 .collect(Collectors.toList());
     }
 
