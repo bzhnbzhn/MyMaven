@@ -58,6 +58,6 @@ class BookTest {
         Book book1 = new Book("Book", 5);
         Book book2 = new Book("Book", 5);
         mapWithBook.put(book1, "print this string");
-        assertEquals("print this string", Book.getLibraryName(book1, book2), "Wrong library name was found");
+        assertEquals("print this string", mapWithBook.get(book2), "Wrong library name was found");
     }
 }
