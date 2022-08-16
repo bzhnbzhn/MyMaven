@@ -133,10 +133,4 @@ public class Book {
                 .sorted(Comparator.comparing(Book::getName).reversed().thenComparingDouble(Book::getPrice))
                 .collect(Collectors.toList());
     }
-
-    public static String getLibraryName(Book book1, Book book2) {
-        Map<Book, String> mapWithBook = new HashMap<>();
-        mapWithBook.put(book1, "print this string");
-        return mapWithBook.get(book2);
-    }
 }
